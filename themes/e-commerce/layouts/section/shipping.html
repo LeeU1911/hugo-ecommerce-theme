@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="{{ .Lang }}">
+{{ partial "head.html" . }}
+
+<body id="page-top" class="index">
+{{ partial "google_tag_manager_after_opening_body_tag.html" }}
+{{ partial "messenger_customer_chat_plugin.html" . }}
+{{ partial "nav-for-other-page.html" . }}
+{{ "<!-- terms and conditions Grid Section -->" | safeHTML }}
+<section id="{{ .Params.url }}" class="bg-light-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">{{ .Title }}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <ul class="progressbar">
+                <li class="active">Chọn sản phẩm</li>
+                <li class="in-progress">Thông tin</li>
+                <li>Xác nhận</li>
+                <li>Hoàn tất</li>
+            </ul>
+        </div>
+        <div class="row alert alert-info">
+            <p class="order-page-content">
+                {{ .Content }}
+            </p>
+        </div>
+        {{ partial "order-id.html" . }}
+        <div class="row">
+            <div class="col-md-12">
+                {{ partial "selected-product-list.html" . }}
+                <div class="panel panel-default">
+                    <div class="panel-heading">Khuyến mại</div>
+                    <div class="panel-body">
+                        <!-- Form Name -->
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="name">Mã giảm giá (nếu có)</label>
+                            <div class="col-md-8">
+                                <input data-bind="value: promoCode, disable: discountPercent() >= 0" id="promoCode" name="promoCode" type="text"
+                                       placeholder="Mã giảm giá" class="form-control input-lg">
+                            </div>
+                            <div class="col-md-2">
+                                <button id="verifyPromoCode" name="verifyPromoCode"
+                                        class="btn btn-lg btn-success"
+                                        data-bind="text: discountPercent() >= 0?'Gỡ bỏ':'Áp dụng'">
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Đơn hàng</div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" name="bill" id="bill">
+                            <fieldset>
+
+
+                                <!-- Form Name -->
+                                <legend>Thông tin giao hàng</legend>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" for="name">Tên *</label>
+                                    <div class="col-md-8">
+                                        <input data-bind="value: info.name" id="name" name="name" type="text"
+                                               placeholder="Tên" class="form-control input-lg" data-hj-whitelist>
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" for="phone1">Số điện thoại *</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <span class="input-group-addon" data-bind="text: info.phone1CountryCode"></span>
+                                            <input data-bind="value: info.phone1" id="phone1" name="phone1" type="tel"
+                                                   placeholder="901234567" class="form-control input-lg" data-hj-whitelist>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" for="email">Email (nhận thông tin đơn hàng)</label>
+                                    <div class="col-md-8">
+                                        <input data-bind="value: info.email" id="email" name="email" type="email"
+                                               placeholder="example@gmail.com" class="form-control input-lg" >
+
+                                    </div>
+                                </div>
+                                <!-- Select Basic -->
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" for="province">Tỉnh/Thành phố</label>
+                                    <div class="col-md-6">
+                                        <select data-bind="value: info.province, options: info.availableProvinces, optionsValue: 'name', optionsText: 'name'" id="province" name="province"
+                                                class="form-control input-lg">
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Select Basic -->
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" for="district">Quận/Huyện</label>
+                                    <div class="col-md-6">
+                                        <select data-bind="value: info.district, options: info.availableDistricts, optionsValue: 'name', optionsText: 'name'" id="district" name="district"
+                                                class="form-control input-lg">
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Select Basic -->
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" for="ward">Phường/Xã</label>
+                                    <div class="col-md-6">
+                                        <select data-bind="value: info.ward, options: info.availableWards, optionsValue: 'name', optionsText: 'name'" id="ward" name="ward"
+                                                class="form-control input-lg">
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" for="address">Địa chỉ *</label>
+                                    <div class="col-md-8">
+                                        <input data-bind="value: info.address" id="address" name="address" type="text"
+                                               placeholder="Số nhà, tên đường, số căn hộ"
+                                               class="form-control input-lg">
+                                    </div>
+                                </div>
+
+                                <!-- Multiple Radios -->
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" for="radios">Hình thức thanh toán *</label>
+                                    <div class="col-md-8" id="radios">
+                                        <div class="radio">
+                                            <label for="radios-0">
+                                                <input name="radios" id="radios-0" value="cod" data-bind="checked: info.paymentType" type="radio">
+                                                Thanh toán lúc nhận hàng (COD)
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label for="radios-1">
+                                                <input name="radios" id="radios-1" value="bank-transfer" data-bind="checked: info.paymentType" type="radio">
+                                                Chuyển khoản
+                                            </label>
+                                            <a href="/qa/#cách-thanh-toán" target="_blank"> (TK VIETCOMBANK)</a>
+                                            <a href="/qa/#cách-thanh-toán" target="_blank"> (TK VP BANK)</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Textarea -->
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label" for="additionalNote">Ghi chú</label>
+                                    <div class="col-md-8">
+                                        <textarea data-bind="value: info.additionalNote" class="form-control"
+                                                  id="additionalNote" name="textarea" placeholder="Ghi chú thêm nếu có, ví dụ: vui lòng giao sau thứ 3"></textarea>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <!-- Button (Double) -->
+            <div class="form-group">
+                <div class="col-xs-12 col-md-6 text-right second-last-btn">
+                    <button type="submit" id="save" name="save" class="btn btn-xxl btn-success btn-block" data-bind="click: submit">Tiếp tục</button>
+                </div>
+                <div class="col-xs-6 col-md-3 text-center">
+                    <button id="cancel" name="cancel" class="btn btn-xxl btn-danger btn-block">Xóa thông tin</button>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <button id="edit" name="save" class="btn btn-xxl btn-default btn-block">Sửa đơn hàng</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+{{ if .Site.Params.params.footer.enable }}
+{{ partial "footer.html" . }}
+{{ end }}
+{{ partial "js_order_page.html" . }}
+<script type="text/javascript" src="{{ printf "js/%s.js" "vi-VN" | absURL }}"></script>
+<script>
+    var VNPhoneCountryCode = "+84";
+
+    $(function() {
+        function getPhoneNumber(phoneNum) {
+            var validatedPhoneNumber = validatePhoneNumberVN(phoneNum);
+            if(validatedPhoneNumber.isValid){
+                return validatedPhoneNumber.phoneNumber;
+            }
+        }
+        var emptyBill = {
+            meta: {
+                date: undefined
+            },
+            data: {
+                info: {
+                    prefix: "",
+                    name: "",
+                    phone1: "",
+                    phone2: "",
+                    email: "",
+                    address: "",
+                    province: ""
+                },
+                products: []
+            }
+        };
+
+        var bill = JSON.parse(sessionStorage.getItem('order')) || emptyBill;
+
+        // Custom validation for phone number
+        ko.validation.rules['phoneVN'] = {
+            validator: function (val, otherVal) {
+                if(otherVal){
+                    if(!val){
+                        return true;
+                    }
+                    var result = validatePhoneNumberVN(val);
+                    return result.isValid;
+                }
+                return true;
+            }
+        };
+        ko.validation.registerExtenders();
+        ko.validation.locale('vi-VN');
+        var viewModel = ko.validatedObservable({
+            id: ko.observable((bill && bill.id) || ""),
+            info:{
+                name: ko.observable((bill && bill.info && bill.info.name) || "").extend({ required: true, minLength: 1 }),
+                phone1CountryCode: ko.observable((bill && bill.info && bill.info.phone1CountryCode) || VNPhoneCountryCode),
+                phone1: ko.observable((bill && bill.info && bill.info.phone1.substring(3)) || "").extend({ required: true, phoneVN: true }),
+                verificationCode: ko.observable(""),
+                phone2CountryCode: ko.observable((bill && bill.info && bill.info.phone2CountryCode) || VNPhoneCountryCode),
+                phone2: ko.observable((bill && bill.info && bill.info.phone2 && bill.info.phone2.substring(3)) || "").extend({ required: false, phoneVN: true }),
+                email: ko.observable((bill && bill.info && bill.info.email) || "").extend({ required: false, email: true }),
+                address: ko.observable((bill && bill.info && bill.info.address) || "").extend({ required: true, minLength: 1 }),
+                province: ko.observable((bill && bill.info && bill.info.province) || "Hồ Chí Minh"),
+                availableProvinces: ko.observable((bill && bill.info && bill.info.availableProvinces) || getListProvinces()),
+                district: ko.observable((bill && bill.info && bill.info.district) || "1"),
+                availableDistricts: ko.observable((bill && bill.info && bill.info.availableDistricts) || undefined),
+                ward: ko.observable((bill && bill.info && bill.info.ward) || "Tân Định"),
+                availableWards: ko.observable((bill && bill.info && bill.info.availableWards) || undefined),
+                paymentType: ko.observable((bill && bill.info && bill.info.paymentType) || "cod"),
+                additionalNote: ko.observable((bill && bill.info && bill.info.additionalNote) || "")
+            },
+            products: getProductsArrayFromBill(bill),
+            promotionalProducts: undefined,
+            subtotalBeforeDiscount: ((bill && bill.subtotalBeforeDiscount) || calculateTotalBillWithoutShippingCostWithoutDiscount(bill)),
+            subtotal: ko.observable(calculateTotalBillWithoutShippingCost(bill)),
+            shippingCost: undefined,
+            promoCode: ko.observable((bill && bill.promoCode) || ""),
+            discountPercent: ko.observable((bill && bill.discountPercent) || (bill.discountPercent == 0? 0: undefined)),
+            submit: function () {
+                if (viewModel.errors().length === 0) {
+                    var billFormUI = ko.toJS(viewModel);
+                    bill.meta = {};
+                    bill.meta.date = new Date().getTime();
+                    bill.info = billFormUI.info;
+                    bill.info.phone1 = getPhoneNumber(viewModel().info.phone1());
+                    bill.info.phone2 = getPhoneNumber(viewModel().info.phone2());
+                    bill.promoCode = billFormUI.promoCode;
+                    bill.discountPercent = billFormUI.discountPercent;
+                    bill.promotionalProducts = billFormUI.promotionalProducts;
+                    saveToSession(bill);
+                    window.location = "/confirm";
+                }
+                else {
+                    alert('Vui lòng kiểm tra dữ liệu.');
+                    viewModel.errors.showAllMessages();
+                }
+            }
+        });
+
+        // Activates knockout.js
+        ko.validation.init({
+            grouping: {
+                deep: true,
+                live: true,
+                observable: true
+            },
+            decorateInputElement: true
+        });
+        viewModel.errors = ko.validation.group(viewModel);
+
+        ko.applyBindings(viewModel);
+
+        $('#province').change(function(){
+            if(provinceName = $('#province').val()){
+                populateDistrictByProvinceName(provinceName);
+            }
+        });
+        $('#district').change(function(){
+            if(districtName = $('#district').val()){
+                populateWardByDistrictName(districtName);
+            }
+        });
+
+        function getListProvinces() {
+            $.getJSON(apiBaseURL + "/v1/provinces", function (data) {
+                data = sortProvinces(data);
+                viewModel().info.availableProvinces(data);
+            }).fail(function() {
+                viewModel().info.availableProvinces([{id: 79, name: "Hồ Chí Minh"}]);
+                console.log("Error contacting api server! Use HCM as the only value");
+            });
+        }
+
+        function populateDistrictByProvinceName(provinceName){
+            if(typeof provinceName === "string") {
+                var provinceId = lookupPlaceIdFromName(viewModel().info.availableProvinces(), provinceName);
+            }
+            getListOfDistrictsByProvinceIdFromApi(provinceId);
+        }
+
+        function populateWardByDistrictName(districtName){
+            if(typeof districtName === "string") {
+                var districtId = lookupPlaceIdFromName(viewModel().info.availableDistricts(), districtName);
+            }
+            getListOfWardsByDistrictIdFromApi(districtId);
+        }
+
+        function getListOfDistrictsByProvinceIdFromApi(provinceId) {
+            $.getJSON(apiBaseURL + "/v1/province/" + provinceId + "/districts", function (data) {
+                data = sortDistrictOrProvinceOnLocaleCompare(data);
+                data = data.map(function(d){d.name = d.type + " " + d.name; return d;});
+                viewModel().info.availableDistricts(data);
+            }).fail(function () {
+                setDefaultValuesForDistrict();
+                console.log("Error contacting api server! Use districts of HCM.");
+                function setDefaultValuesForDistrict() {
+                    viewModel().info.availableDistricts([{"id": "760", "name": "Quận 1"}, {
+                        "id": "771",
+                        "name": "Quận 10"
+                    }, {"id": "772", "name": "Quận 11"}, {
+                        "id": "761",
+                        "name": "Quận 12"
+                    }, {"id": "769", "name": "Quận 2"}, {
+                        "id": "770",
+                        "name": "Quận 3"
+                    }, {
+                        "id": "773",
+                        "name": "Quận 4"
+                    }, {"id": "774", "name": "Quận 5"}, {"id": "775", "name": "Quận 6"}, {"id": "778", "name": "Quận 7"}, {
+                        "id": "776",
+                        "name": "Quận 8"
+                    }, {"id": "763", "name": "Quận 9"}, {"id": "785", "name": "Huyện Bình Chánh"}, {
+                        "id": "777",
+                        "name": "Quận Bình Tân"
+                    }, {"id": "765", "name": "Quận Bình Thạnh"}, {
+                        "id": "787",
+                        "name": "Huyện Cần Giờ"
+                    }, {"id": "783", "name": "Huyện Củ Chi"}, {
+                        "id": "764",
+                        "name": "Quận Gò Vấp"
+                    }, {
+                        "id": "784",
+                        "name": "Huyện Hóc Môn"
+                    }, {"id": "786", "name": "Huyện Nhà Bè"}, {"id": "768", "name": "Quận Phú Nhuận"}, {
+                        "id": "766",
+                        "name": "Quận Tân Bình"
+                    }, {
+                        "id": "767",
+                        "name": "Quận Tân Phú"
+                    }, {"id": "762", "name": "Quận Thủ Đức"}]);
+                }
+            });
+        }
+
+        function getListOfWardsByDistrictIdFromApi(districtId) {
+            $.getJSON(apiBaseURL + "/v1/province/" + districtId + "/wards", function (data) {
+                data = sortDistrictOrProvinceOnLocaleCompare(data);
+                data = data.map(function(d){d.name = d.type + " " + d.name; return d;});
+                viewModel().info.availableWards(data);
+            }).fail(function () {
+                setDefaultValuesForWard();
+                console.log("Error contacting api server! Use wards of HCM district 1.");
+                function setDefaultValuesForWard() {
+                    viewModel().info.availableWards([{"id":"26734","name":"Phường Tân Định","type":"Phường"},{"id":"26737","name":"Phường Đa Kao","type":"Phường"},{"id":"26740","name":"Phường Bến Nghé","type":"Phường"},{"id":"26743","name":"Phường Bến Thành","type":"Phường"},{"id":"26746","name":"Phường Nguyễn Thái Bình","type":"Phường"},{"id":"26749","name":"Phường Phạm Ngũ Lão","type":"Phường"},{"id":"26752","name":"Phường Cầu Ông Lãnh","type":"Phường"},{"id":"26755","name":"Phường Cô Giang","type":"Phường"},{"id":"26758","name":"Phường Nguyễn Cư Trinh","type":"Phường"},{"id":"26761","name":"Phường Cầu Kho","type":"Phường"}]);
+                }
+            });
+        }
+
+
+        function sortProvinces(provinces){
+            provinces = sortDistrictOrProvinceOnLocaleCompare(provinces);
+            movePopularPlaceToTop(provinces);
+            return provinces;
+            function movePopularPlaceToTop(provinces) {
+                provinces.move(28, 0);
+                provinces.move(24, 1);
+            }
+        }
+        function sortDistrictOrProvinceOnLocaleCompare(districts){
+            districts = districts.sort(function (a, b) {
+                return a.name.localeCompare(b.name);
+            });
+            return districts;
+        }
+
+        function clearForm() {
+            $('#bill')[0].reset();
+        }
+
+        $('#edit').on('click', function (e) {
+            e.preventDefault();
+            window.location = "/order";
+        });
+
+        $('#cancel').on('click', function(e){
+            e.preventDefault();
+            clearForm();
+        });
+
+        function saveToSession(bill) {
+            sessionStorage.setItem("order", JSON.stringify(bill));
+        }
+
+        function verifyPromoCode(promoCode) {
+            if (promoCode.toUpperCase() === 'MN30OFF') {
+                alert({{ with .Site.Params.params.discount_code_success_alert }}{{ . }}{{ end }} + '30%');
+                return 30;
+            } else if (promoCode.toUpperCase() === 'FB15TY') {
+                alert({{ with .Site.Params.params.discount_code_success_alert }}{{ . }}{{ end }} + '15%');
+                return 15;
+            } else if (promoCode.toUpperCase() === 'KS10PCT') {
+                alert({{ with .Site.Params.params.discount_code_success_alert }}{{ . }}{{ end }} + '10%');
+                return 10;
+            } else if (promoCode.toUpperCase() === 'HTTPSPROBLEM' || promoCode.toUpperCase() === '43NL3YTRI') {
+                alert({{ with .Site.Params.params.discount_code_success_alert }}{{ . }}{{ end }} + '5%');
+                return 5;
+            } else if (promoCode.toUpperCase() === 'FREESHIPDALAT' || promoCode.toUpperCase() === 'E484FT') {
+                alert({{ with .Site.Params.params.discount_code_success_alert }}{{ . }}{{ end }} + 'FREE SHIP');
+                return 0;
+            } else if (promoCode.toUpperCase() === '952DLR') {
+                alert('Mã dành cho đại lý hợp lệ');
+                return 0;
+            }
+
+            /*if (promoCode === 'DLF1T5OFF') {
+                return 5;
+            } else if (promoCode === 'DLF1T10OFF') {
+                return 10;
+            } else if (promoCode === 'DLF1T15OFF') {
+                return 15;
+            } else if (promoCode === 'DLF1T20OFF') {
+                return 20;
+            }*/
+            alert("Mã giảm giá không hợp lệ! Vui lòng kiểm tra.");
+            return -1;
+        }
+
+        function applyDiscountOnTotal(subtotal, discountPercent) {
+            return subtotal * (1 - (discountPercent / 100));
+        }
+
+        $('#verifyPromoCode').on('click', function (e) {
+            e.preventDefault();
+            if(viewModel().discountPercent() === undefined || viewModel().discountPercent() < 0) {
+                var promoCode = viewModel().promoCode();
+                var subtotal = viewModel().subtotal();
+                var discountPercent = verifyPromoCode(promoCode);
+                viewModel().subtotalBeforeDiscount = subtotal;
+                viewModel().subtotal(roundDownToThousand(applyDiscountOnTotal(subtotal, discountPercent)));
+                viewModel().discountPercent(discountPercent);
+            } else {
+                viewModel().promoCode(undefined);
+                viewModel().discountPercent(undefined);
+                viewModel().subtotal(viewModel().subtotalBeforeDiscount);
+            }
+        });
+    });
+
+function validatePhoneNumberSG(phoneNumInit){
+    var Output = {
+        isValid : true,
+        reason : "",
+        phoneNumber : VNPhoneCountryCode + phoneNumInit
+    };
+    return Output;
+}
+function validatePhoneNumberVN(phoneNumInit){
+    var pattern1 = /^[0][0-9]{9,10}$/;//Start with zero
+    var pattern2 = /^[0-9]{9,10}$/;//start with !zero
+    var phoneNum = phoneNumInit;
+    if (pattern1.test(phoneNum)) {
+        var Output = {
+            isValid : true,
+            reason : "",
+            phoneNumber : VNPhoneCountryCode + phoneNum.slice(1)
+        };
+        return Output;
+    }
+    else if(pattern2.test(phoneNum)){
+        var Output = {
+            isValid : true,
+            reason : "",
+            phoneNumber : VNPhoneCountryCode + phoneNum
+        };
+        return Output;
+    }
+    else {
+        if(/./.test(phoneNum) || /\(/.test(phoneNum) || /\)/.test(phoneNum) || /-/.test(phoneNum)){
+            var Output = {
+                isValid : false,
+                reason : "Phone number should only contain numbers [0-9].",
+                phoneNumber : phoneNum
+            };
+            return Output;
+        }
+        else if(phoneNum.length < 10){
+            var Output = {
+                isValid : false,
+                reason : "Too less numbers",
+                phoneNumber : phoneNum
+            };
+            return Output;
+        }
+        else if(phoneNum.length > 11){
+            var Output = {
+                isValid : false,
+                reason : "Too many numbers",
+                phoneNumber : phoneNum
+            };
+            return Output;
+        }
+    }
+}
+</script>
+
+</body>
+</html>

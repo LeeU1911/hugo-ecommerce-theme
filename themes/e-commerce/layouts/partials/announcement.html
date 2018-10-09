@@ -1,0 +1,16 @@
+<div class="header-top-bg navbar-fixed-top">
+    <a href="{{ with .Site.Params.params.announcement_link }}{{ . | absLangURL }}{{ end }}">{{ with .Site.Params.params.announcement_text }}{{ . | markdownify }}{{ end }}</a>
+    <ul class="lang-switcher">
+        {{ if .IsTranslated -}}
+        {{ range .Translations }}
+        <li><a rel="alternate" href="{{ .RelPermalink }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">{{ .Lang }}</a></li>
+        {{ end -}}
+        {{ else -}}
+        {{ range .Site.Languages -}}
+        {{ if ne $.Site.Language.Lang .Lang }}
+        <li><a rel="alternate" href="/{{ .Lang }}" hreflang="{{ .Lang }}" lang="{{ .Lang }}">{{ .Lang }}</a></li>
+        {{ end -}}
+        {{ end -}}
+        {{ end -}}
+    </ul>
+</div>

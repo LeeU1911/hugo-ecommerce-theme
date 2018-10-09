@@ -1,0 +1,64 @@
+<div class="panel panel-default">
+    <div class="panel-heading">GIỎ HÀNG
+    </div>
+
+    <div class="panel-body" id="order-content">
+        <p data-bind="foreach: products.filter(function(p){return p.amount>0})">
+            {{ range where .Site.Pages "Section" "product" }}
+            {{ if isset .Params "key" }}
+            <span data-bind="if: name == '{{ .Params.key }}'">
+                {{ $image_type_arr := split .Params.thumbnail "." }}
+                {{ $image_ext := index $image_type_arr 1 }}
+                {{ if or (eq $image_ext "jpg") (eq $image_ext "png") }}
+                    {{ $url := printf "img/product/%s" .Params.thumbnail }}
+                    <img src="{{ $url | absLangURL }}" class="img-responsive img-thumbnail" alt="{{ .Params.thumbnail }}" style="width: 50px;">
+                {{ else }}
+                    {{ $url := printf "img/product/%s.jpg" .Params.thumbnail }}
+                    <img src="{{ $url | absLangURL }}" class="img-responsive img-thumbnail" alt="{{ .Params.thumbnail }}" style="width: 50px;">
+                {{ end }}
+                <span>
+                    {{ .Title }} -
+                </span>
+                <span data-bind="text: numeral(price).format('0,0')"></span>
+                <span> x </span>
+                <span data-bind="text: amount"></span>
+                <span> = </span>
+                <span data-bind="text: numeral(subtotal).format('0,0')"></span>
+                <br/>
+            </span>
+            {{ end }}
+            {{ end }}
+
+        </p>
+        <p data-bind="visible: promotionalProducts != undefined && promotionalProducts['lotusAmt'] != undefined && promotionalProducts['lotusAmt'] > 0">
+            <span>Bột Hạt Sen (50g) - 119,000 x 1 = -119,000</span><span> (Khuyến mãi)</span>
+        </p>
+        <p data-bind="visible: promotionalProducts != undefined && promotionalProducts['dalababyAmt'] != undefined && promotionalProducts['dalababyAmt'] > 0">
+            <span>Bột rau củ DalaBaby (70g) - 199,000 x 1 = -199,000</span><span> (Khuyến mãi)</span>
+        </p>
+        <p data-bind="visible: promotionalProducts != undefined && promotionalProducts['garlicoilAmt'] != undefined && promotionalProducts['garlicoilAmt'] > 0">
+            <span>Dầu tỏi tía Đà Lạt (250ml) - 150,000 x 1 = -150,000 </span><span> (Khuyến mãi)</span>
+        </p>
+        <p data-bind="visible: promotionalProducts != undefined && promotionalProducts['mooncakeAmt'] != undefined && promotionalProducts['mooncakeAmt'] > 0">
+            <span>Hộp bánh trung thu 4 cái - 170,000 x <span data-bind="text: promotionalProducts != undefined && promotionalProducts['mooncakeAmt']"></span> = 0 </span><span> (Khuyến mãi)</span>
+        </p>
+        <p>
+            <span data-bind="if: shippingCost != undefined && !shippingCost.isNaN && shippingCost() > 0">
+                <span>Phí giao hàng: </span><span data-bind="text: numeral(shippingCost()).format('0,0')"></span><span></span>
+            </span>
+            <span data-bind="if: shippingCost != undefined && !shippingCost.isNaN && shippingCost() == 0">
+                <span>Phí giao hàng: MIỄN PHÍ</span>
+            </span>
+        </p>
+        <p>
+            <span data-bind="if: discountPercent">
+                <span>Giảm giá: </span>-<span data-bind="text: discountPercent"></span>%
+            </span>
+            <p>
+                <span data-bind="visible: shippingCost != undefined && !shippingCost.isNaN">Tổng tiền: </span>
+                <span data-bind="visible: shippingCost == undefined || shippingCost.isNaN">Tạm tính: </span>
+                <span data-bind="text: numeral(subtotal()).format('0,0')"></span>
+            </p>
+        </p>
+    </div>
+</div>
