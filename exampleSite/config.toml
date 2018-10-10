@@ -2,7 +2,7 @@
 baseurl = "https://dalafarm.vn/"
 languageCode = "vi-vn"
 title = "DalaFarm"
-theme = "e-commerce"
+theme = "hugo-ecommerce-theme"
 defaultContentLanguage = "vi"
 # Enter your tracking code to enable Google Analytics
 #googleAnalytics = "UA-87063471-2"
