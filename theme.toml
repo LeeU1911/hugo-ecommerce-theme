@@ -1,0 +1,21 @@
+# theme.toml template for a Hugo theme
+# See https://github.com/spf13/hugoThemes#themetoml for an example
+
+name = "Hugo Ecommerce Theme"
+license = "MIT"
+licenselink = "https://github.com/LeeU1911/hugo-ecommerce-theme/blob/master/LICENSE"
+description = ""
+homepage = "https://dalafarm.com.vn"
+tags = []
+features = []
+min_version = 0.19
+
+[author]
+  name = "Vu tan Le"
+  homepage = ""
+
+# If porting an existing theme
+[original]
+  name = ""
+  homepage = ""
+  repo = ""

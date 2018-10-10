@@ -1,0 +1,16 @@
+[livesin]
+other = "Lives in"
+[currency]
+other = "USD"
+[length]
+other = "Độ dài "
+[word]
+one = "word"
+other = "words"
+[minuteRead]
+one = "minute read"
+other = "minutes read"
+[relatedPosts]
+other = "Related Articles"
+[relatedProducts]
+other = "Related Items"

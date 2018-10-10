@@ -1,0 +1,39 @@
+{{ "<!-- Footer section -->" | safeHTML }}
+<footer class="bg-logo-brown">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 footer-info">
+        <span>{{ with .Site.Params.params.footer.info }}{{ . | markdownify }}{{ end }}</span>
+      </div>
+      <div class="col-md-4">
+        <ul class="list-inline social-buttons">
+          <div class="fb-page" data-href="https://www.facebook.com/Dalafarm.com.vn" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Dalafarm.com.vn" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Dalafarm.com.vn">DalaFarm</a></blockquote></div>
+          <br/>
+          <br/>
+          {{ range .Site.Params.params.footer.social }}
+            <li><a href="{{ .link }}" target="_blank"><i class="fa {{ .icon }}"></i></a></li>
+          {{ end }}
+
+        </ul>
+		 <ul class="list-inline quicklinks">
+
+          {{ range .Site.Params.params.footer.quicklinks }}
+            <li><a href="{{ .link | absLangURL }}">{{ .text  | markdownify }}</a></li>
+          {{ end }}
+
+        </ul>
+        <span class="copyright">{{ with .Site.Params.params.footer.copyright }}{{ . | markdownify }}{{ end }}</span>
+      </div>
+      <div class="col-md-4 footer-quicklinks">
+		 <span>{{ with .Site.Params.params.footer.blog }}{{ . | markdownify }}{{ end }}</span>
+		  <ul class="list-inline quicklinks">
+
+          {{ range .Site.Params.params.footer.sitemap }}
+            <li style="text-decoration: underline;"><a href="{{ .link | absLangURL }}">{{ .text  | markdownify }}</a></li></br>
+          {{ end }}
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

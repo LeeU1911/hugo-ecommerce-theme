@@ -1,0 +1,15 @@
+<div class="col-sm-3 text-center box-item">
+    <a href="{{ .Permalink }}" class="blog-link">
+        {{ $url := printf "img/blog/%s" .Params.thumbnail }}
+        <img src="{{ $url | absURL }}" class="img-responsive center-block" alt="{{ .Title }}">
+    </a>
+        <time class="blog-time">
+            {{ $data := index .Site.Data .Site.Language.Lang }}
+            {{ .Date.Day }} {{ index $data.month (printf "%d" .Date.Month) }}, {{ .Date.Year }}
+        </time>
+    <a href="{{ .Permalink }}" class="blog-link">
+        <div class="blog-title">
+            {{ .Title }}
+        </div>
+    </a>
+</div>

@@ -1,0 +1,18 @@
+<!-- image -->
+<figure {{ with .Get "class" }}class="{{.}}"{{ end }} class="text-center">
+{{ with .Get "link"}}<a href="{{.}}">{{ end }}
+    <img class="center-block img-responsive" src="{{ .Get "src" }}" {{ if or (.Get "title") (.Get "caption") }}alt="{{ with .Get "title"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}" {{ end }}{{ with .Get "width" }}width="{{.}}" {{ end }}/>
+    {{ if .Get "link"}}</a>{{ end }}
+{{ if or (or (.Get "title") (.Get "caption")) (.Get "attr")}}
+<figcaption>{{ if isset .Params "title" }}
+    <h5>{{ .Get "title" }}</h5>{{ end }}
+    {{ if or (.Get "caption") (.Get "attr")}}<p>
+        {{ .Get "caption" }}
+        {{ with .Get "attrlink"}}<a href="{{.}}"> {{ end }}
+        {{ .Get "attr" }}
+        {{ if .Get "attrlink"}}</a> {{ end }}
+    </p> {{ end }}
+</figcaption>
+{{ end }}
+</figure>
+<!-- image -->

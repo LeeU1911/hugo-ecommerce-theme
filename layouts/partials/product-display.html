@@ -1,0 +1,9 @@
+<div itemscope itemtype="http://schema.org/ItemList" class="flex-wrap">
+{{ range .Data.Pages.GroupByParam "product_line" }}
+<h3>{{ .Key }}</h3>
+    {{ range $i, $e :=  .Pages }}
+        {{ .Render "summary" }}
+    {{ end }}
+{{ end }}
+</div>
+<!--{{ partial "always-top-order-button.html" . }}-->
