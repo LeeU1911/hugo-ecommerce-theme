@@ -1,0 +1,25 @@
+{{ $currentPage := . }}
+{{ range .Site.Menus.main }}
+{{ if .HasChildren }}
+
+<li class="dropdown{{if $currentPage.HasMenuCurrent " main" . }} active{{end}}">
+<a href="{{ .URL | relLangURL }}" class="dropdown-toggle" data-toggle="dropdown">
+    {{ .Pre }}
+    <span>{{ .Name }}</span>
+    <span class="caret"></span>
+</a>
+<ul class="dropdown-menu">
+    {{ range .Children }}
+    <li class="dropdown-submenu"
+    {{if $currentPage.IsMenuCurrent "main" . }} class="active"{{end}}><a href="{{ .URL | relLangURL }}"> {{ .Name }} </a> </li>
+    {{ end }}
+</ul>
+{{else}}
+<li>
+    <a href="{{ .URL | relLangURL }}">
+        {{ .Pre }}
+        <span>{{ .Name }}</span>
+    </a>
+    {{end}}
+</li>
+{{end}}

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="{{ .Lang }}">
+{{ partial "head.html" . }}
+<body id="page-top" class="index">
+{{ partial "google_tag_manager_after_opening_body_tag.html" }}
+{{ partial "messenger_customer_chat_plugin.html" . }}
+{{ partial "nav-for-other-page.html" . }}
+
+{{ partial "hero.html" . }}
+
+{{ if .Site.Params.params.review.enable }}
+{{ partial "review.html"  . }}
+{{ end }}
+
+{{ "<!-- terms and conditions Grid Section -->" | safeHTML }}
+<section id="{{ .Params.url }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">{{ .Title }}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <ul class="progressbar">
+                <li class="in-progress">Chọn sản phẩm</li>
+                <li>Thông tin</li>
+                <li>Xác nhận</li>
+                <li>Hoàn tất</li>
+            </ul>
+        </div>
+        <div class="row alert alert-info">
+            <p class="order-page-content">
+                {{ .Content | markdownify | emojify }}
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-xs-12 col-md-8 text-right" style="margin-bottom: 15px;">
+                <button id="save1" name="save" class="btn btn-xxl btn-success saveBtn btn-block">Đến Giỏ Hàng</button>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" name="bill" id="bill">
+                    <fieldset>
+
+                        <div id="products" class="flex-wrap">
+                            {{ $data := index .Site.Data .Site.Language.Lang }}
+                            {{ $prices := $data.price }}
+                            {{ range $i, $e := where .Site.Pages "Section" "product" }}
+                            {{ if isset .Params "key" }}
+                            {{ $strKey := string .Params.key }}
+                            {{ $lengthOfKey := len $strKey }}
+                            {{ $start := sub $lengthOfKey 2 }}
+                            {{ $end := $lengthOfKey }}
+                            {{ if or (eq (substr $strKey $start $end) "5g") (eq $strKey "carrot") (eq $strKey "pumpkin") (eq $strKey "purpleswpotato") (eq $strKey "pennywort") (eq $strKey "heartleaf") (eq $strKey "beetroot") (eq $strKey "broccoli") (eq $strKey "moringa") (eq $strKey "dalababy") (eq $strKey "spinach") (eq $strKey "pennywort100") (eq $strKey "heartleaf100")}}
+                            <div class="col-xs-4 col-md-3 box-item product-box flex-column" style="margin-bottom: 1em;">
+                                {{ if isset .Params "popular_product" }}<div class="close-ribbon"><i class="fa fa-heart" aria-hidden="true"></i></div>{{ end }}
+                                {{ partial "product-img.html" . }}
+                                <div class="product-description flex-column">
+                                    <div class="product-caption">
+                                        <h4>{{ .Title | markdownify }}</h4>
+                                    </div>
+                                    <div class=" text-price">
+                                        {{ if isset .Params "discounted_percent" }}
+                                        <span class="text-discount-percent">
+                                        {{ echoParam .Params "discounted_percent" }}
+                                        </span>
+                                        {{ end }}
+                                        <p class="text-current-price">
+                                        <p>
+                                            {{ $dscnt_price := printf "%s_discounted_price" .Params.key }}
+                                            {{ $discounted_price := index $prices $dscnt_price }}
+                                            {{ $currency := index $prices "currency" }}
+                                            {{ if gt $discounted_price 0 }}<span class="text-current-price" id="{{ printf "%sPrice" .Params.key }}" data-price="{{ $discounted_price }}" data-bind="text: numeral({{ $discounted_price }}).format('0,0') + ' {{ $currency }}'">
+                                            </span>{{ if isset .Params "discounted_percent" }}
+                                            <span class="text-discount-percent">
+                                                                {{ echoParam .Params "discounted_percent" }}
+                                                            </span>
+                                            {{ end }}
+                                        <p><span class="text-original-price" id="{{ printf "%sPrice" .Params.key }}" data-price="{{ index $prices .Params.key }}" data-bind="text: numeral({{ index $prices .Params.key }}).format('0,0') + ' {{ $currency }}'">
+                                            {{ else }}<span class="text-current-price" id="{{ printf "%sPrice" .Params.key }}" data-price="{{ index $prices .Params.key }}" data-bind="text: numeral({{ index $prices .Params.key }}).format('0,0') + ' {{ $currency }}'">
+                                            {{ end }}</span></p>
+                                        </p>
+
+                                        </p>
+                                    </div>
+
+                                </div>
+                                <div class="input-group btn-block" data-bind="visible: products.{{.Params.key}}Amt() == 0">
+                                    <button type="button" class="btn btn-default btn-lg btn-number add-to-cart-init-btn" data-type="plus" data-field="quant[1]-{{.Params.key}}"
+                                            id="addToCartBtn"
+                                            onclick="dataLayer.push({'sku': '{{ .Params.key }}', 'value': 1})">
+                                        Chọn
+                                    </button>
+                                </div>
+                                <div class="input-group" data-bind="visible: products.{{.Params.key}}Amt() > 0">
+                                            <span class="input-group-btn">
+                                                 <button type="button" class="btn btn-default btn-lg btn-number add-to-cart-btn"
+                                                         onclick="dataLayer.push({'sku': '{{ .Params.key }}', 'value': -1})"
+                                                         id="addToCartBtnMinus"
+                                                         data-type="minus" data-field="quant[1]-{{.Params.key}}">
+                                                     <span class="glyphicon glyphicon-minus"></span>
+                                                 </button>
+                                            </span>
+                                    <input data-bind="value: products.{{.Params.key}}Amt" type="text" name="quant[1]-{{.Params.key}}" class="form-control input-lg input-number add-to-cart-btn" value="0" min="0" max="100">
+                                    <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default btn-lg btn-number add-to-cart-btn"
+                                                        onclick="dataLayer.push({'sku': '{{ .Params.key }}', 'value': 1})"
+                                                        id="addToCartBtnPlus"
+                                                        data-type="plus" data-field="quant[1]-{{.Params.key}}">
+                                                    <span class="glyphicon glyphicon-plus"></span>
+                                                </button>
+                                            </span>
+                                </div>
+                            </div>
+                            {{ end }}
+                            {{ end }}
+                            {{ end }}
+                        </div>
+
+
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="row order-buttons">
+            <!-- Button (Double) -->
+            <div class="form-group">
+                <div class="col-xs-12 col-md-2 text-right"></div>
+                <div class="col-xs-12 col-md-8 text-right">
+                    <button id="save2" name="save" class="btn btn-xxl btn-success saveBtn btn-block">Đến Giỏ Hàng</button>
+                </div>
+                <div class="col-xs-12 col-md-2 cancel-btn">
+                    <!--<button id="cancel" name="cancel" class="btn btn-xxl btn-danger btn-block">Xóa thông tin</button>-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{{ if .Site.Params.params.contact.enable }}
+{{ partial "contact.html" . }}
+{{ end }}
+
+{{ if .Site.Params.params.footer.enable }}
+{{ partial "footer.html" . }}
+{{ end }}
+{{ partial "js_order_page.html" . }}
+<script>
+    $(function() {
+        var bill = JSON.parse(sessionStorage.getItem('promo-order')) || undefined;
+
+        var viewModel = {
+            id: ko.observable((bill && bill.id) || ""),
+            info:{
+                name: ko.observable((bill && bill.info && bill.info.name) || ""),
+                phone1CountryCode: ko.observable((bill && bill.info && bill.info.phone1CountryCode) || ""),
+                phone1: ko.observable((bill && bill.info && bill.info.phone1) || ""),
+                verificationCode: ko.observable(""),
+                phone2CountryCode: ko.observable((bill && bill.info && bill.info.phone2CountryCode) || ""),
+                phone2: ko.observable((bill && bill.info && bill.info.phone2) || ""),
+                email: ko.observable((bill && bill.info && bill.info.email) || ""),
+                address: ko.observable((bill && bill.info && bill.info.address) || ""),
+                province: ko.observable((bill && bill.info && bill.info.province) || "TP HCM"),
+                district: ko.observable((bill && bill.info && bill.info.district) || ""),
+                paymentType: ko.observable((bill && bill.info && bill.info.paymentType) || "cod"),
+                additionalNote: ko.observable((bill && bill.info && bill.info.additionalNote) || "")
+            },
+            products: {
+                pumpkinAmt: ko.observable((bill && bill.products && bill.products.pumpkinAmt) || "0"),
+                moringaAmt: ko.observable((bill && bill.products && bill.products.moringaAmt) || "0"),
+                tomatoAmt: ko.observable((bill && bill.products && bill.products.tomatoAmt) || "0"),
+                carrotAmt: ko.observable((bill && bill.products && bill.products.carrotAmt) || "0"),
+                heartleaf100Amt: ko.observable((bill && bill.products && bill.products.heartleaf100Amt) || "0"),
+                heartleafAmt: ko.observable((bill && bill.products && bill.products.heartleafAmt) || "0"),
+                pennywort100Amt: ko.observable((bill && bill.products && bill.products.pennywort100Amt) || "0"),
+                pennywortAmt: ko.observable((bill && bill.products && bill.products.pennywortAmt) || "0"),
+                matcha100Amt: ko.observable((bill && bill.products && bill.products.matcha100Amt) || "0"),
+                matchaAmt: ko.observable((bill && bill.products && bill.products.matchaAmt) || "0"),
+                cocoa100Amt: ko.observable((bill && bill.products && bill.products.cocoa100Amt) || "0"),
+                beetrootAmt: ko.observable((bill && bill.products && bill.products.beetrootAmt) || "0"),
+                broccoliAmt: ko.observable((bill && bill.products && bill.products.broccoliAmt) || "0"),
+                mushroomAmt: ko.observable((bill && bill.products && bill.products.mushroomAmt) || "0"),
+                lotusAmt: ko.observable((bill && bill.products && bill.products.lotusAmt) || "0"),
+                spinachAmt: ko.observable((bill && bill.products && bill.products.spinachAmt) || "0"),
+                purpleswpotatoAmt: ko.observable((bill && bill.products && bill.products.purpleswpotatoAmt) || "0"),
+                carrot5gAmt: ko.observable((bill && bill.products && bill.products.carrot5gAmt) || "0"),
+                pumpkin5gAmt: ko.observable((bill && bill.products && bill.products.pumpkin5gAmt) || "0"),
+                broccoli5gAmt: ko.observable((bill && bill.products && bill.products.broccoli5gAmt) || "0"),
+                mushroom5gAmt: ko.observable((bill && bill.products && bill.products.mushroom5gAmt) || "0"),
+                lotus5gAmt: ko.observable((bill && bill.products && bill.products.lotus5gAmt) || "0"),
+                spinach5gAmt: ko.observable((bill && bill.products && bill.products.spinach5gAmt) || "0"),
+                purpleswpotato5gAmt: ko.observable((bill && bill.products && bill.products.purpleswpotato5gAmt) || "0"),
+                garlicoilAmt: ko.observable((bill && bill.products && bill.products.garlicoilAmt) || "0"),
+                dalababyAmt: ko.observable((bill && bill.products && bill.products.dalababyAmt) || "0"),
+                sundetoxAmt: ko.observable((bill && bill.products && bill.products.sundetoxAmt) || "0"),
+                moondetoxAmt: ko.observable((bill && bill.products && bill.products.moondetoxAmt) || "0"),
+                stardetoxAmt: ko.observable((bill && bill.products && bill.products.stardetoxAmt) || "0"),
+                combodetoxAmt: ko.observable((bill && bill.products && bill.products.combodetoxAmt) || "0")
+            }
+        };
+        viewModel.sumAmt = ko.computed(function () {
+            var sum = 0;
+            for(var el in this.products) {
+                if(this.products.hasOwnProperty(el)) {
+                    var amt = parseFloat(this.products[el]());
+                    if(!isNaN(amt)){
+                        sum += amt;
+                    }
+                }
+            }
+            return sum;
+        }, viewModel);
+
+        // Activates knockout.js
+        ko.applyBindings(viewModel);
+
+        function clearForm() {
+            $('#bill')[0].reset();
+        }
+
+        $('#cancel').on('click', function(e){
+            e.preventDefault();
+            clearForm();
+        });
+
+        $('.saveBtn').on('click', function (e) {
+            e.preventDefault();
+            if (!bill){
+                bill = ko.toJS(viewModel);
+                if(!bill.id) {
+                    bill.id = generateUID();
+                }
+            }else{
+                var onscreenBill =  ko.toJS(viewModel);
+                bill.products = onscreenBill.products;
+            }
+            bill = storeProductPrice(bill);
+            if(isEmptyCart(bill)){
+                alert("Bạn chưa chọn sản phẩm nào. Vui lòng chọn sản phẩm cần mua trước khi tiếp tục!");
+                return;
+            }
+            saveToSession(bill);
+            window.location = "/promo-shipping";
+        });
+
+        function storeProductPrice(bill){
+            var products = bill.products;
+            for (var property in products) {
+                if (products.hasOwnProperty(property)) {
+                    var key = property.substr(0, property.length - 3);
+                    var keyPrice = key + "Price";
+                    bill.products[keyPrice] = parseInt($("#" + keyPrice).data("price"));
+                }
+            }
+            return bill;
+        }
+
+        function saveToSession(bill) {
+            sessionStorage.setItem("promo-order", JSON.stringify(bill));
+        }
+
+        $('.btn-number').click(function(e){
+            e.preventDefault();
+
+            fieldName = $(this).attr('data-field');
+            type      = $(this).attr('data-type');
+            var input = $("input[name='"+fieldName+"']");
+            var currentVal = parseInt(input.val());
+            if (!isNaN(currentVal)) {
+                if(type == 'minus') {
+
+                    if(currentVal > input.attr('min')) {
+                        input.val(currentVal - 1).change();
+                    }
+                    if(parseInt(input.val()) == input.attr('min')) {
+                        $(this).attr('disabled', true);
+                    }
+
+                } else if(type == 'plus') {
+
+                    if(currentVal < input.attr('max')) {
+                        input.val(currentVal + 1).change();
+                    }
+                    if(parseInt(input.val()) == input.attr('max')) {
+                        $(this).attr('disabled', true);
+                    }
+
+                }
+            } else {
+                input.val(0);
+            }
+        });
+        var $inputNumber = $('.input-number');
+        $inputNumber.focusin(function(){
+            $(this).data('oldValue', $(this).val());
+        });
+        $inputNumber.change(function() {
+
+            minValue =  parseInt($(this).attr('min'));
+            maxValue =  parseInt($(this).attr('max'));
+            valueCurrent = parseInt($(this).val());
+
+            name = $(this).attr('name');
+            if(valueCurrent >= minValue) {
+                $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
+            } else {
+                alert('Sorry, the minimum value was reached');
+                $(this).val($(this).data('oldValue'));
+            }
+            if(valueCurrent <= maxValue) {
+                $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
+            } else {
+                alert('Sorry, the maximum value was reached');
+                $(this).val($(this).data('oldValue'));
+            }
+
+
+        });
+        $inputNumber.keydown(function (e) {
+            // Allow: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+                // Allow: Ctrl+A
+                (e.keyCode == 65 && e.ctrlKey === true) ||
+                // Allow: home, end, left, right
+                (e.keyCode >= 35 && e.keyCode <= 39)) {
+                // let it happen, don't do anything
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+    });
+    function generateUID() {
+        // I generate the UID from two parts here
+        // to ensure the random number provide enough bits.
+        var firstPart = (Math.random() * 46656) | 0;
+        var secondPart = (Math.random() * 46656) | 0;
+        firstPart = ("000" + firstPart.toString(36)).slice(-3);
+        secondPart = ("000" + secondPart.toString(36)).slice(-3);
+        return (firstPart + secondPart).toUpperCase();
+    }
+
+</script>
+<script type="text/javascript" src="https://www.vietguys.biz/sms.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{{ "<!-- Hero -->" | safeHTML }}
+<header>
+  <div class="container">
+    <div class="intro-text">
+      <div class="intro-lead-in"><span>{{ with .Site.Params.params.hero.title }}{{ . | markdownify }}{{ end }}</span></div>
+      <div class="intro-heading"><span>{{ with .Site.Params.params.hero.subtitle }}{{ . | markdownify }}{{ end }}</span></div>
+      <a href="{{ with .Site.Params.params.hero.buttonPath }}{{ . }}{{ end }}" class="page-scroll btn btn-xl">{{ with .Site.Params.params.hero.buttonText }}{{ . }}{{ end }}</a>
+    </div>
+  </div>
+</header>
