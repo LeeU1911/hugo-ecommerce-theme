@@ -1,17 +1,17 @@
 {{ "<!-- About Section -->" | safeHTML }}
-<section id="{{ with .Site.Params.params.about.path }}{{ . }}{{ end }}" class="bg-light-gray">
+<section id="{{ with (index .Site.Data .Site.Language.Lang).config.params.about.path }}{{ . }}{{ end }}" class="bg-light-gray">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h2 class="section-heading">{{ with .Site.Params.params.about.title }}{{ . | markdownify }}{{ end }}</h2>
-        <h3 class="section-subheading text-muted">{{ with .Site.Params.params.about.subtitle }}{{ . | markdownify }}{{ end }}</h3>
+        <h2 class="section-heading">{{ with (index .Site.Data .Site.Language.Lang).config.params.about.title }}{{ . | markdownify }}{{ end }}</h2>
+        <h3 class="section-subheading text-muted">{{ with (index .Site.Data .Site.Language.Lang).config.params.about.subtitle }}{{ . | markdownify }}{{ end }}</h3>
       </div>
     </div>
     <div class="row">
       <div class="col-lg-12">
         <ul class="timeline">
 
-          {{ range $i, $e := .Site.Params.params.about.events }}
+          {{ range $i, $e := (index .Site.Data .Site.Language.Lang).config.params.about.events }}
             <li {{ if (not (modBool $i 2)) }}class="timeline-inverted" {{ end }}>
               <div class="timeline-image">
                 {{ $url := printf "img/about/%s" .img }}
@@ -31,7 +31,7 @@
 
           <li class="timeline-inverted">
             <div class="timeline-image">
-              <h4>{{ with .Site.Params.params.about.endpoint }}{{ . | markdownify }}{{ end }}</h4>
+              <h4>{{ with (index .Site.Data .Site.Language.Lang).config.params.about.endpoint }}{{ . | markdownify }}{{ end }}</h4>
             </div>
           </li>
         </ul>

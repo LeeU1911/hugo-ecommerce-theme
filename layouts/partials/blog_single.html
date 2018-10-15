@@ -54,7 +54,7 @@
                     <br/>
                     <article class="blog-article" itemprop="articleBody">
                         {{ .Content | markdownify | emojify}}
-                        <p>{{ with .Site.Params.params.contentFooter }}{{ . | markdownify }}{{ end }}</p>
+                        <p>{{ with (index .Site.Data .Site.Language.Lang).config.params.contentFooter }}{{ . | markdownify }}{{ end }}</p>
                         {{ partial "fb_share_button.html" . }}
                         {{ partial "zalo_share_button.html" . }}
                     </article>
@@ -92,7 +92,7 @@
                     {{ if $.Scratch.Get "has_related" }}
                     <strong>{{ i18n "relatedPosts" | upper }}:</strong>
                     <ul style="list-style: none">
-                        {{ $num_to_show := .Site.Params.params.related_blog_limit | default 5 }}
+                        {{ $num_to_show := (index .Site.Data .Site.Language.Lang).config.params.related_blog_limit | default 5 }}
                         {{ range first $num_to_show (where (where .Site.Pages ".Params.tags" "intersect" .Params.tags) "Permalink" "!=" .Permalink) }}
                         <li>
                             {{ $url := printf "img/blog/%s" .Params.thumbnail }}
@@ -109,7 +109,7 @@
     </div>
 </section>
 {{ partial "always-top-order-button.html" . }}
-{{ if .Site.Params.params.footer.enable }}
+{{ if (index .Site.Data .Site.Language.Lang).config.params.footer.enable }}
 {{ partial "footer.html" . }}
 {{ end }}
 {{ partial "js_other_page.html" . }}

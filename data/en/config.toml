@@ -1,0 +1,216 @@
+## English
+
+[params]
+name = "DalaFarm"
+description = """DalaFarm provides vegetables powders such as strawberry, celery, beetroot, carrot, heartleaf, spinach, tomato, pennywort,
+                 lotus seed powder for baby. DalaFarm also produces mixed vegetables for detox drink, along with garlic oil.
+                 """
+#announcement_text = "[TOTAL PASHIMINA...](/promo-order)"
+announcement_link = "/promotion"
+discount_code_success_alert = "Congratulations on getting your promotion "
+# Link custom assets relative to /static
+custom_css = ["css/nprogress.css"]
+custom_js  = ["js/nprogress.js"]
+favicon    = "favicon.ico"
+disableFonts = false
+#Content footer
+#Content footer
+contentFooter = """
+<a href="/order" style="color: #fff;background-color: #C5F442;" class="page-scroll btn btn-xl">Buy Now</a>
+"""
+related_blog_limit = 7
+
+# Navigation
+[params.navigation]
+brand = "DalaFarm"
+product = "Products"
+about = "About Us"
+team = "DalaFarm Team"
+contact = "Contact Us"
+# Optional logo as brand stored in img/
+#logo = "logo.svg"
+
+# Hero section
+[params.hero]
+title = "Welcome to DalaFarm!"
+subtitle = "It's nice to meet you"
+buttonText = "See product offering"
+buttonPath = "/san-pham/"
+orderButtonText = "BUY"
+nextButtonText = "NEXT"
+
+# Products section
+[params.product]
+enable = true
+title = "Products"
+subtitle = "Dalafarm product offerings"
+path = "product"
+
+# Review section
+[params.review]
+enable = false
+title = "Feedback"
+subtitle = "See what customers say about DalaFarm products"
+path = "phan-hoi"
+    [[params.review.reviews]]
+      img = "yen-nguyen.jpg"
+      name = "Yến Nguyễn"
+      position = "Software engineer at DXC Vietnam"
+      content = "I used the product mixed powder for baby food, baby loves and baby stomach seems more digestible. Thank you shop."
+
+    [[params.review.reviews]]
+      img = "tai-phan.jpg"
+      name = "Tài Phan"
+      position = "Senior Head teacher at outerspace language school"
+      content = "I have been using DalaFarm products. If you are eating vegetables is a torture, you will forget it when using DalaFarm."
+
+    [[params.review.reviews]]
+      img = "uyen-to.jpg"
+      name = "Tố Uyên"
+      position = "Ho Chi Minh City, Vietnam"
+      content = "This lettuce is a favorite fish. Easy to drink, not bad smell like vegetables, mixed with water added sugar added little ice is always great."
+
+    [[params.review.reviews]]
+      img = "nguyen-thu-thao.jpg"
+      name = "Nguyễn Thu Thảo"
+      position = "Ho Chi Minh City, Vietnam"
+      content = "Let's try for her 5-year-old daughter to see how it commented on how to drink a few sips is that it always says \"This is the broccoli, not the mother?\" Hihi ..."
+
+# About section
+[params.about]
+enable = true
+    title = "DalaFarm Story"
+    subtitle = "How our journey started."
+    endpoint = "Be part<br> of our <br>story!"
+    path = "about-us"
+    [[params.about.events]]
+      img = "toi-den-duc-ha.png"
+      date = "June 2015"
+      title = "Đức Hà company is established"
+      description = "Ms. Hà founded Đức Hà company to produce and trade herb-based spices, most notably, black garlic and garlic-based products"
+
+    [[params.about.events]]
+      img = "dalahouse.jpg"
+      date = "Feb 2016"
+      title = "Dalahouse was born"
+      description = "Ms. Trâm founded Dalahouse company with a passion to make veggie powders more accessible and convenient for busy life style"
+
+    [[params.about.events]]
+      img = "dalafarm.png"
+      date = "March 2017"
+      title = "DalaFarm story began"
+      description = "Share the same passion about high quality Vietnamese products, Ms. Hà and Ms. Trâm merged Đức Hà và Dalahouse into one unified company - namely DalaFarm. With 2 additional co-founders - Ms. Thư and Mr. Vũ, we promise to deliver high quality, healthy and safe products to everyone in the world!"
+
+# Team section
+[params.team]
+enable = true
+center = true
+title = "DalaFarm Team"
+subtitle = ""
+description = "We are passionate, young and dynamic people with different backgrounds, with share the same motivation to bring the best of Vietnam to the world."
+path = "team"
+    [[params.team.members]]
+      img = "thu.jpg"
+      name = "Võ Thị Thanh Thư"
+      position = "Co-founder"
+      livesIn = "Hồ Chí Minh, Việt Nam"
+#      bio = "Sale Representative"
+      social = [
+        ["fa-facebook", "https://www.facebook.com/thanh.thuvo.1"]
+      ]
+
+    [[params.team.members]]
+      img = "vu.jpg"
+      name = "Lê Tấn Vũ"
+      position = "Co-founder"
+      livesIn = "Hồ Chí Minh, Việt Nam"
+#      bio = "Software Engineer"
+      social = [
+        ["fa-facebook", "https://www.facebook.com/LeeU14"]
+      ]
+# Contact section
+[params.contact]
+enable = true
+title = "Contact Us"
+    subtitle  = "Leave a message and we'll respond within a day."
+    buttonText = "Send message"
+    thanks = "Thanks for contacting us. We'll respond to you within a day."
+    error = "Message was not sent. Please email us at info@dalafarm.vn"
+    email = "info@dalafarm.vn"
+
+# 'warning' defines error messages for invalid inputs
+[params.contact.form.name]
+  text = "Name *"
+  warning = "Please input your name."
+
+[params.contact.form.email]
+  text = "Email*"
+  warning = "Please input your email address."
+
+[params.contact.form.phone]
+  text = "Phone *"
+  warning = "Please input your phone number."
+
+[params.contact.form.message]
+  text = "Message *"
+  warning = "Please input your message."
+
+# Add optional form fields to identify contact forms
+[[params.contact.form.hidden]]
+    name = "DalaFarm"
+    value = "dalafarm.vn"
+#
+[[params.contact.form.hidden]]
+# Special values for name such as "page" and "site" will be autofilled
+    name = "site"
+
+
+# Footer section
+[params.footer]
+enable = true
+copyright = "Copyright DalaFarm (C) 2017 - 2018"
+info = """##### DALAFARM - CHUÔNG XANH PRODUCING AND TRADING CO. LTD.
+
+<i class="fa fa-building-o"></i> 317 block D, Lac Long Quan apartment, Ward 5, District 11, HCMC, Vietnam
+
+<i class="fa fa-phone"></i> [0906 951 498](tel:0906 951 498)
+
+<i class="fa fa-envelope"></i> [info@dalafarm.vn](mailto:info@dalafarm.vn) | [sale@dalafarm.vn](mailto:sale@dalafarm.vn)
+
+<i class="fa fa-calendar"></i> Monday - Saturday <i class="fa fa-clock-o"></i> 8:00 - 17:00
+"""
+[[params.footer.quicklinks]]
+  text = "Terms and Conditions"
+  link = "/term-condition"
+[[params.footer.social]]
+  icon = "fa-facebook"
+  link = "https://www.facebook.com/dalafarm.vn/"
+[[params.footer.social]]
+  icon = "fa-pinterest"
+  link = "https://www.pinterest.com/dalafarm/"
+[[params.footer.social]]
+  icon = "fa-instagram"
+  link = "https://www.instagram.com/dalafarm.vn/"
+
+[[params.footer.sitemap]]
+  text = "DalaFarm Blog"
+  link = "/blog/"
+[[params.footer.sitemap]]
+  text = "DalaFarm Kitchen"
+  link = "/dala-kitchen/"
+[[params.footer.sitemap]]
+  text = "Product"
+  link = "/product/"
+[[params.footer.sitemap]]
+  text = "FAQ"
+  link = "/qa/"
+[[params.footer.sitemap]]
+  text = "DalaFarm Profile"
+  link = "/company-profile/"
+[[params.footer.sitemap]]
+  text = "Certificates"
+  link = "/company-docs/"
+[[params.footer.sitemap]]
+  text = "DalaFarm Team"
+  link = "/team/"
+

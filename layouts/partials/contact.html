@@ -4,11 +4,11 @@
     <div class="row">
       <div class="col-lg-12 text-center">
 
-        {{ with .Site.Params.params.contact.title }}
+        {{ with (index .Site.Data .Site.Language.Lang).config.params.contact.title }}
         <h2 class="section-heading">{{ . | markdownify }}</h2>
         {{ end }}
 
-        {{ with .Site.Params.params.contact.subtitle }}
+        {{ with (index .Site.Data .Site.Language.Lang).config.params.contact.subtitle }}
         <h3 class="section-subheading text-muted">{{ . | markdownify }}</h3>
         {{ end }}
 
@@ -16,31 +16,31 @@
     </div>
     <div class="row">
       <div class="col-lg-12">
-        {{ if not .Site.Params.params.contact.postURL }}
-        <form  action="//formspree.io/{{ with (or .Site.Params.params.contact.email .Site.Params.params.email)}}{{.}}{{ end }}" method="POST" name="sentMessage" id="contactForm">
+        {{ if not (index .Site.Data .Site.Language.Lang).config.params.contact.postURL }}
+        <form  action="//formspree.io/{{ with (or (index .Site.Data .Site.Language.Lang).config.params.contact.email (index .Site.Data .Site.Language.Lang).config.params.email)}}{{.}}{{ end }}" method="POST" name="sentMessage" id="contactForm">
         {{ else }}
-        <form  action="{{ .Site.Params.params.contact.postURL }}" method="POST" name="sentMessage" id="contactForm">
+        <form  action="{{ (index .Site.Data .Site.Language.Lang).config.params.contact.postURL }}" method="POST" name="sentMessage" id="contactForm">
         {{ end }}
 
           <fieldset>
             <div class="row">
               <div class="col-md-6">
 
-                {{ with .Site.Params.params.contact.form.name }}
+                {{ with (index .Site.Data .Site.Language.Lang).config.params.contact.form.name }}
                 <div class="form-group">
                   <input class="form-control" id="name" required="required" type="text" name="name" placeholder="{{ with .text }}{{ .  | markdownify }}{{ end }}" data-validation-error-msg="{{ with .warning }}{{ . | markdownify }}{{ end }}">
                   <p class="help-block text-danger"></p>
                 </div>
                 {{ end }}
 
-                {{ with .Site.Params.params.contact.form.email }}
+                {{ with (index .Site.Data .Site.Language.Lang).config.params.contact.form.email }}
                 <div class="form-group">
                   <input class="form-control" id="email" required="required" type="email" name="email" placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}" data-validation-error-msg="{{ with .warning }}{{ . | markdownify }}{{ end }}">
                   <p class="help-block text-danger"></p>
                 </div>
                 {{ end }}
 
-                {{ with .Site.Params.params.contact.form.phone }}
+                {{ with (index .Site.Data .Site.Language.Lang).config.params.contact.form.phone }}
                 <div class="form-group">
                   <input class="form-control" id="phone" required="required" type="number" name="phone" placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}" data-validation-error-msg="{{ with .warning }}{{ . | markdownify }}{{ end }}"></textarea>
                   <p class="help-block text-danger"></p>
@@ -49,7 +49,7 @@
               </div>
 
               <div class="col-md-6">
-              {{ with .Site.Params.params.contact.form.message }}
+              {{ with (index .Site.Data .Site.Language.Lang).config.params.contact.form.message }}
                 <div class="form-group">
                   <textarea class="form-control" id="message" required="required" name="message" placeholder="{{ with .text }}{{ . | markdownify }}{{ end }}" data-validation-error-msg="{{ with .warning }}{{ . | markdownify }}{{ end }}"></textarea>
                   <p class="help-block text-danger"></p>
@@ -60,23 +60,23 @@
               <div class="clearfix"></div>
               <div class="col-lg-12 text-center">
                 <div class="text-success" id="success" style="display:none;">
-                  {{ with .Site.Params.params.contact.thanks }}
+                  {{ with (index .Site.Data .Site.Language.Lang).config.params.contact.thanks }}
                     {{ . | markdownify }}
                   {{ else }}
                     Thank you for contacting us.
                   {{ end }}
                 </div>
                 <div class="text-danger" id="error" style="display:none;">
-                  {{ with .Site.Params.params.contact.error }}
+                  {{ with (index .Site.Data .Site.Language.Lang).config.params.contact.error }}
                     {{ . | markdownify }}
                   {{ else }}
-                    Message could not be send. Please contact us at {{ (or .Site.Params.params.contact.email .Site.Params.params.email) }} instead.
+                    Message could not be send. Please contact us at {{ (or (index .Site.Data .Site.Language.Lang).config.params.contact.email (index .Site.Data .Site.Language.Lang).config.params.email) }} instead.
                   {{ end }}
                 </div><br />
-                <button type="submit" value="Submit" class="btn btn-xl">{{ with .Site.Params.params.contact.buttonText }}{{ . }}{{ end }}</button>
+                <button type="submit" value="Submit" class="btn btn-xl">{{ with (index .Site.Data .Site.Language.Lang).config.params.contact.buttonText }}{{ . }}{{ end }}</button>
               </div>
             </div>
-            {{ range .Site.Params.params.contact.form.hidden }}
+            {{ range (index .Site.Data .Site.Language.Lang).config.params.contact.form.hidden }}
               {{ if eq .name "site" }}
                 <input type="hidden" name="{{ .name }}" value="{{ $.Permalink }}"/>
               {{ else if eq .name "page" }}

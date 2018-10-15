@@ -42,7 +42,7 @@
             <div class="input-group btn-block">
                 <a href="{{ "/promo-order" | absLangURL }}"><button type="button" class="btn btn-default btn-lg btn-number add-to-cart-init-btn init-order-class"
                         id="buyBtn">
-                    <span class="">{{ with .Site.Params.params.hero.orderButtonText }}{{ . }}{{ end }}</span>
+                    <span class="">{{ with (index .Site.Data .Site.Language.Lang).config.hero.orderButtonText }}{{ . }}{{ end }}</span>
                 </button></a>
             </div>
             {{ end }}

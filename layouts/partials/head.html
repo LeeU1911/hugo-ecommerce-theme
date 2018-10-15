@@ -3,13 +3,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {{ if .IsHome }}
-  {{ with .Site.Params.params.description }}<meta name="description" content="{{ . }}">{{ end }}
+  {{ with (index .Site.Data .Site.Language.Lang).config.params.description }}<meta name="description" content="{{ . }}">{{ end }}
   {{ else if and (not .IsHome) .IsNode (not .IsPage) }}
     {{ if isset .Params "description" }}<meta name="description" content="{{ .Description }}">{{ else }}<meta name="description" content="{{ .Title  }}">{{ end }}
   {{ else }}
     {{ if isset .Params "description" }}<meta name="description" content="{{ .Description }}">{{ else }}<meta name="description" content="{{ .Summary }}">{{ end }}
   {{ end }}
-  {{ with .Site.Params.params.name }}<meta name="author" content="{{ . }}">{{ end }}
+  {{ with (index .Site.Data .Site.Language.Lang).config.params.name }}<meta name="author" content="{{ . }}">{{ end }}
   {{ .Hugo.Generator }}
   <title>{{ .Title }}{{ if not .IsHome }} &middot; {{ .Site.Title }}{{ end }}</title>
   {{ "<!-- Stylesheets -->" | safeHTML }}
@@ -31,7 +31,7 @@
   <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.44/theme-default.min.css" />-->
   <link href="{{ "css/styles.min.css" | absURL }}" rel="stylesheet">
 
-  {{ range .Site.Params.params.custom_css }}
+  {{ range (index .Site.Data .Site.Language.Lang).config.params.custom_css }}
     <link rel="stylesheet" href="{{ . | absURL }}">
   {{ end }}
   {{ partial "google_tag_manager_in_head_tag.html" }}
@@ -39,11 +39,11 @@
   {{ "<!-- Custom Fonts -->" | safeHTML }}
   <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />-->
 
-  {{ with not .Site.Params.params.disableFonts }}
+  {{ with not (index .Site.Data .Site.Language.Lang).config.params.disableFonts }}
   <link href="//fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet" type="text/css">
   {{ end }}
 
-  {{ with .Site.Params.params.favicon }}
+  {{ with (index .Site.Data .Site.Language.Lang).config.params.favicon }}
     <link rel="shortcut icon" type="image/x-icon" href="{{ . | absURL }}">
     <link rel="icon" type="image/x-icon" href="{{ . | absURL }}">
   {{ end }}

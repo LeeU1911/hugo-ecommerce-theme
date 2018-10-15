@@ -21,7 +21,7 @@
 </section>
 <!-- Return to Top -->
 <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>
-{{ if .Site.Params.params.footer.enable }}
+{{ if (index .Site.Data .Site.Language.Lang).config.params.footer.enable }}
 {{ partial "footer.html" . }}
 {{ end }}
 {{ partial "js_other_page.html" . }}

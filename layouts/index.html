@@ -8,7 +8,7 @@
 
 {{ partial "hero.html" . }}
 
-{{ if .Site.Params.params.review.enable }}
+{{ if (index .Site.Data .Site.Language.Lang).config.params.review.enable }}
 {{ partial "review.html"  . }}
 {{ end }}
 
@@ -142,11 +142,11 @@
     </div>
 </section>
 
-{{ if .Site.Params.params.contact.enable }}
+{{ if (index .Site.Data .Site.Language.Lang).config.params.contact.enable }}
 {{ partial "contact.html" . }}
 {{ end }}
 
-{{ if .Site.Params.params.footer.enable }}
+{{ if (index .Site.Data .Site.Language.Lang).config.params.footer.enable }}
 {{ partial "footer.html" . }}
 {{ end }}
 {{ partial "js_order_page.html" . }}

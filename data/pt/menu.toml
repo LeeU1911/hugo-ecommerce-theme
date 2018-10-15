@@ -1,0 +1,58 @@
+
+[[menu.main]]
+url    = "#"
+name   = "Blog"
+weight = 1
+identifier = "blog"
+[[menu.main]]
+url    = "/blog"
+name   = "Blog DalaFarm"
+weight = 1
+parent = "blog"
+[[menu.main]]
+url    = "/dala-kitchen"
+name   = "Cozinha DalaFarm"
+weight = 2
+parent = "blog"
+
+[[menu.main]]
+url    = "/product"
+name   = "Produtos"
+weight = 2
+
+[[menu.main]]
+url    = "/qa"
+name   = "FAQ"
+weight = 3
+
+[[menu.main]]
+url    = "#"
+name   = "Sobre nós"
+weight = 4
+identifier = "about-us"
+[[menu.main]]
+url    = "/#about-us"
+name   = "Jornada DalaFarm"
+weight = 1
+parent = "about-us"
+[[menu.main]]
+url    = "/company-profile"
+name   = "Perfil"
+weight = 2
+parent = "about-us"
+[[menu.main]]
+url    = "/company-docs"
+name   = "Certificados"
+weight = 3
+parent = "about-us"
+[[menu.main]]
+url    = "/team"
+name   = "Time DalaFarm"
+weight = 4
+parent = "about-us"
+
+[[menu.main]]
+url    = "/#contact"
+name   = "Contato"
+weight = 5
+

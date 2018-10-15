@@ -1,0 +1,53 @@
+[[menu.main]]
+url    = "#"
+name   = "Blog"
+weight = 1
+identifier = "blog"
+[[menu.main]]
+url    = "/blog"
+name   = "DalaFarm Blog"
+weight = 1
+parent = "blog"
+[[menu.main]]
+url    = "/dala-kitchen"
+name   = "DalaFarm Kitchen"
+weight = 2
+parent = "blog"
+
+[[menu.main]]
+url    = "/san-pham"
+name   = "Sản Phẩm"
+weight = 2
+
+[[menu.main]]
+url    = "/qa"
+name   = "Hỏi Đáp"
+weight = 3
+
+[[menu.main]]
+url    = "#"
+name   = "Về DalaFarm"
+weight = 4
+identifier = "ve-dalafarm"
+[[menu.main]]
+url    = "/company-profile"
+name   = "Đôi nét về DalaFarm"
+weight = 1
+parent = "ve-dalafarm"
+[[menu.main]]
+url    = "/company-docs"
+name   = "Giấy tờ chứng nhận"
+weight = 2
+parent = "ve-dalafarm"
+[[menu.main]]
+url    = "/team"
+name   = "Thành Viên DalaFarm"
+weight = 3
+parent = "ve-dalafarm"
+
+
+[[menu.main]]
+url    = "/#contact"
+name   = "Liên Hệ"
+weight = 5
+

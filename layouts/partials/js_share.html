@@ -9,7 +9,7 @@
 
 <!--{{ template "_internal/google_analytics_async.html" . }}-->
 
-{{ range .Site.Params.params.custom_js }}
+{{ range (index .Site.Data .Site.Language.Lang).config.params.custom_js }}
 <script src="{{ . | absURL }}"></script>
 {{ end }}
 

@@ -47,7 +47,7 @@
         <span style="float:right;">{{ template "_internal/pagination.html" . }}</span>
     </div>
 </section>
-{{ if .Site.Params.params.footer.enable }}
+{{ if (index .Site.Data .Site.Language.Lang).config.params.footer.enable }}
 {{ partial "footer.html" . }}
 {{ end }}
 

@@ -1,5 +1,5 @@
 <div class="header-top-bg navbar-fixed-top">
-    <a href="{{ with .Site.Params.params.announcement_link }}{{ . | absLangURL }}{{ end }}">{{ with .Site.Params.params.announcement_text }}{{ . | markdownify }}{{ end }}</a>
+    <a href="{{ with (index .Site.Data .Site.Language.Lang).config.params.announcement_link }}{{ . | absLangURL }}{{ end }}">{{ with (index .Site.Data .Site.Language.Lang).config.params.announcement_text }}{{ . | markdownify }}{{ end }}</a>
     <ul class="lang-switcher">
         {{ if .IsTranslated -}}
         {{ range .Translations }}
