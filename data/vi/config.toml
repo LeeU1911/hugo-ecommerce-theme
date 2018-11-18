@@ -1,0 +1,219 @@
+##Vietnamese
+
+[params]
+name = "DalaFarm"
+description = """DalaFarm cung cấp các sản phẩm bột rau củ, bột rau xanh, bao gồm: dâu tây, cần tây, củ dền, cà rốt, diếp cá, cả bó xôi, cà chua, rau má,
+                 hạt sen. DalaFarm còn cung cấp bột rau củ hỗn hợp để pha thức uống giải độc detox
+                 và dầu tỏi."""
+announcement_text = "[TẶNG KHĂN QUÀNG PASHMINA...](/promo-order)"
+announcement_link = "/promotion"
+discount_code_success_alert = "Chúc mừng bạn đã nhận được khuyến mãi "
+# Link custom assets relative to /static
+custom_css = ["css/nprogress.css"]
+custom_js  = ["js/nprogress.js"]
+favicon    = "favicon.ico"
+disableFonts = false
+#Content footer
+contentFooter = """
+<a href="/order" style="color: #fff;background-color: #C5F442;" class="page-scroll btn btn-xl">Mua Ngay</a>
+"""
+related_blog_limit = 7
+
+# Navigation
+[params.navigation]
+brand = "DalaFarm"
+product = "Sản phẩm"
+about = "Về Dalafarm"
+team = "Chúng tôi"
+contact = "Liên hệ"
+# Optional logo as brand stored in img/
+#logo = "logo.png"
+
+# Hero section
+[params.hero]
+title = "Bổ sung chất xơ tiện lợi gấp từ 5 lần rau củ tươi*"
+subtitle = "Bột rau xanh nguyên chất"
+buttonText = "Tìm hiểu"
+buttonPath = "/san-pham/"
+orderButtonText = "MUA"
+nextButtonText = "TIẾP"
+
+# Products section
+[params.product]
+enable = true
+title = "Sản phẩm"
+subtitle = ""
+path = "san-pham"
+
+# Review section
+[params.review]
+enable = true
+title = "Phản hồi"
+subtitle = "Xem khách hàng của DalaFarm nói gì về sản phẩm nhé"
+path = "phan-hoi"
+    [[params.review.reviews]]
+      img = "yen-nguyen.jpg"
+      name = "Yến Nguyễn"
+      position = "Software engineer at DXC Vietnam"
+      content = "Mình đã dùng sản phẩm pha chung bột cho bé ăn, bé rất thích và dạ dày bé có vẻ dễ tiêu hóa hơn. Cảm ơn shop."
+
+    [[params.review.reviews]]
+      img = "tai-phan.jpg"
+      name = "Tài Phan"
+      position = "Senior Head teacher at outerspace language school"
+      content = "Tôi đã và đang sử dụng sản phẩm của DalaFarm. Nếu bạn đang cảm thấy ăn rau là môt nỗi cực hình thì bạn sẽ quên nó ngay khi sử dụng DalaFarm."
+
+    [[params.review.reviews]]
+      img = "uyen-to.jpg"
+      name = "Tố Uyên"
+      position = "Ho Chi Minh City, Vietnam"
+      content = "Bột rau diếp cá này xài siêu thích. Dễ uống, không nặng mùi như rau, pha với nước thêm xíu đường thêm ít đá là toẹt vời luôn ý."
+
+    [[params.review.reviews]]
+      img = "nguyen-thu-thao.jpg"
+      name = "Nguyễn Thu Thảo"
+      position = "Ho Chi Minh City, Vietnam"
+      content = "Mình thử cho con gái 5 tuổi uống xem nó nhận xét thế nào mà uống vô một vài ngụm là nó phát biểu luôn \"Cái này là sinh tố bông cải phải không mẹ?\" Hihi..."
+
+# About section
+[params.about]
+enable = false
+    title = "Hành Trình DalaFarm"
+    subtitle = "Hành trình của chúng tôi đã bắt đầu như thế nào."
+    endpoint = "Hãy đồng <br>hành cùng <br>DalaFarm!"
+    path = "ve-dalafarm"
+    [[params.about.events]]
+      img = "toi-den-duc-ha.png"
+      date = "June 2015"
+      title = "Công ty Đức Hà được thành lập"
+      description = "Ms. Hà sáng lập ra công ty Đức Hà để sản xuất và kinh doanh các sản phẩm gia vị thảo dược, nổi bật là tỏi đen cùng các sản phẩm về tỏi"
+
+    [[params.about.events]]
+      img = "dalahouse.jpg"
+      date = "Feb 2016"
+      title = "Công ty Dalahouse được ra đời"
+      description = "Ms. Trâm sáng lập ra công ty Dalahouse với khao khát biến sản phẩm rau củ trở nên tiện lợi hơn cho những người bận rộn"
+
+    [[params.about.events]]
+      img = "dalafarm.png"
+      date = "March 2017"
+      title = "Câu chuyện DalaFarm bắt đầu"
+      description = "Chia sẻ chung niềm đam mê về sản xuất và kinh doanh các sản phẩm Việt Nam chất lượng cao, Ms. Hà và Ms. Trâm đã hợp nhất 2 công ty Đức Hà và Dalahouse lại thành 1 công ty duy nhất mang tên DalaFarm. Cùng với 2 cộng sự khác - Ms. Thư và Mr. Vũ, chúng tôi cam kết mang những sản phẩm sạch, chất lượng cao đến với mọi người tiêu dùng!"
+
+# Team section
+[params.team]
+enable = true
+center = true
+title = "Thành viên nòng cốt DalaFarm"
+subtitle = ""
+description = "Chúng tôi là một đội ngũ gồm những thành viên có những nền tảng khác nhau nhưng cùng 1 chí hướng để mang những sản phẩm tốt nhất của Việt Nam ra thế giới."
+path = "chung-toi"
+
+    [[params.team.members]]
+      img = "thu.jpg"
+      name = "Võ Thị Thanh Thư"
+      position = "Co-founder"
+      livesIn = "Hồ Chí Minh, Việt Nam"
+#      bio = "Chuyên viên kinh doanh, đến từ Nestle Việt Nam"
+      social = [
+        ["fa-facebook", "https://www.facebook.com/thanh.thuvo.1"]
+      ]
+
+    [[params.team.members]]
+      img = "vu.jpg"
+      name = "Lê Tấn Vũ"
+      position = "Co-founder"
+      livesIn = "Hồ Chí Minh, Việt Nam"
+#      bio = "Kỹ sư phần mềm"
+      social = [
+        ["fa-facebook", "https://www.facebook.com/LeeU14"]
+      ]
+# Contact section
+[params.contact]
+enable = true
+title = "Liên hệ với DalaFarm"
+    subtitle  = "Hãy để lại 1 lời nhắn và chúng tôi sẽ liên lạc lại trong vòng 1 ngày."
+    buttonText = "Gửi tin nhắn"
+    thanks = "Cám ơn đã liên hệ với chúng tôi. Chúng tôi sẽ trả lời bạn trong vòng 1 ngày."
+    error = "Tin nhắn không gửi được. Vui lòng email cho chúng tôi qua info@dalafarm.vn"
+    email = "info@dalafarm.vn"
+
+# 'warning' defines error messages for invalid inputs
+[params.contact.form.name]
+  text = "Tên của bạn *"
+  warning = "Vui lòng nhập tên."
+
+[params.contact.form.email]
+  text = "Email của bạn*"
+  warning = "Vui lòng nhập email để chúng tôi có thể liên lạc lại với bạn."
+
+[params.contact.form.phone]
+  text = "Số điện thoại *"
+  warning = "Vui lòng nhập số điện thoại để chúng tôi có thể liên lạc lại với bạn."
+
+[params.contact.form.message]
+  text = "Tin nhắn *"
+  warning = "Vui lòng nhập nội dung lời nhắn."
+
+# Add optional form fields to identify contact forms
+[[params.contact.form.hidden]]
+    name = "DalaFarm"
+    value = "dalafarm.vn"
+#
+[[params.contact.form.hidden]]
+# Special values for name such as "page" and "site" will be autofilled
+    name = "site"
+
+
+# Footer section
+[params.footer]
+enable = true
+copyright = "Bản quyền thuộc DalaFarm (C) 2017 - 2018"
+info = """##### DALAFARM - CÔNG TY TNHH SXTM CHUÔNG XANH
+
+<i class="fa fa-building-o"></i> 317 Lô D, CC Lạc Long Quân, Phường 5, Quận 11, TP.HCM <i class="fa fa-phone"></i> [0906 951 498](tel:0906 951 498)
+
+<i class="fa fa-cogs"></i> Tổ 18, thôn Xuân Ngọc, xã Vĩnh Ngọc, Nha Trang, Khánh Hòa
+
+<i class="fa fa-envelope"></i> [info@dalafarm.vn](mailto:info@dalafarm.vn)
+
+<i class="fa fa-calendar"></i> Thứ 2 - thứ 7 <i class="fa fa-clock-o"></i> 8:00 - 17:00
+"""
+
+[[params.footer.quicklinks]]
+  text = "Điều khoản sử dụng"
+  link = "/term-condition"
+[[params.footer.social]]
+  icon = "fa-facebook"
+  link = "https://www.facebook.com/dalafarm.com.vn/"
+[[params.footer.social]]
+  icon = "fa-pinterest"
+  link = "https://www.pinterest.com/dalafarm/"
+[[params.footer.social]]
+  icon = "fa-instagram"
+  link = "https://www.instagram.com/dalafarm.vn/"
+
+[[params.footer.sitemap]]
+  text = "DalaFarm Blog"
+  link = "/blog/"
+[[params.footer.sitemap]]
+  text = "DalaFarm Kitchen"
+  link = "/dala-kitchen/"
+[[params.footer.sitemap]]
+  text = "Sản phẩm"
+  link = "/san-pham/"
+[[params.footer.sitemap]]
+  text = "Hỏi đáp"
+  link = "/qa/"
+[[params.footer.sitemap]]
+  text = "Đôi nét về DalaFarm"
+  link = "/company-profile/"
+[[params.footer.sitemap]]
+  text = "Giấy tờ chứng nhận"
+  link = "/company-docs/"
+[[params.footer.sitemap]]
+  text = "Thành viên DalaFarm"
+  link = "/team/"
+
+
+

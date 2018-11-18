@@ -184,7 +184,7 @@
 
     </div>
 </section>
-{{ if .Site.Params.params.footer.enable }}
+{{ if (index .Site.Data .Site.Language.Lang).config.params.footer.enable }}
 {{ partial "footer.html" . }}
 {{ end }}
 {{ partial "js_order_page.html" . }}
@@ -428,19 +428,19 @@
 
         function verifyPromoCode(promoCode) {
             if (promoCode.toUpperCase() === 'MN30OFF') {
-                alert({{ with .Site.Params.params.discount_code_success_alert }}{{ . }}{{ end }} + '30%');
+                alert({{ with (index .Site.Data .Site.Language.Lang).config.params.discount_code_success_alert }}{{ . }}{{ end }} + '30%');
                 return 30;
             } else if (promoCode.toUpperCase() === 'FB15TY') {
-                alert({{ with .Site.Params.params.discount_code_success_alert }}{{ . }}{{ end }} + '15%');
+                alert({{ with (index .Site.Data .Site.Language.Lang).config.params.discount_code_success_alert }}{{ . }}{{ end }} + '15%');
                 return 15;
             } else if (promoCode.toUpperCase() === 'KS10PCT') {
-                alert({{ with .Site.Params.params.discount_code_success_alert }}{{ . }}{{ end }} + '10%');
+                alert({{ with (index .Site.Data .Site.Language.Lang).config.params.discount_code_success_alert }}{{ . }}{{ end }} + '10%');
                 return 10;
             } else if (promoCode.toUpperCase() === 'HTTPSPROBLEM' || promoCode.toUpperCase() === '43NL3YTRI') {
-                alert({{ with .Site.Params.params.discount_code_success_alert }}{{ . }}{{ end }} + '5%');
+                alert({{ with (index .Site.Data .Site.Language.Lang).config.params.discount_code_success_alert }}{{ . }}{{ end }} + '5%');
                 return 5;
             } else if (promoCode.toUpperCase() === 'FREESHIPDALAT' || promoCode.toUpperCase() === 'E484FT') {
-                alert({{ with .Site.Params.params.discount_code_success_alert }}{{ . }}{{ end }} + 'FREE SHIP');
+                alert({{ with (index .Site.Data .Site.Language.Lang).config.params.discount_code_success_alert }}{{ . }}{{ end }} + 'FREE SHIP');
                 return 0;
             } else if (promoCode.toUpperCase() === '952DLR') {
                 alert('Mã dành cho đại lý hợp lệ');

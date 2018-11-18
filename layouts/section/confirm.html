@@ -68,7 +68,7 @@
         </div>
     </div>
 </section>
-{{ if .Site.Params.params.footer.enable }}
+{{ if (index .Site.Data .Site.Language.Lang).config.params.footer.enable }}
 {{ partial "footer.html" . }}
 {{ end }}
 {{ partial "js_order_page.html" . }}

@@ -15,14 +15,14 @@
             </div>
         </div>
 
-        {{ if .Site.Params.params.team.enable }}
+        {{ if (index .Site.Data .Site.Language.Lang).config.params.team.enable }}
         {{ partial "team.html" . }}
         {{ end }}
 
 
     </div>
 </section>
-{{ if .Site.Params.params.footer.enable }}
+{{ if (index .Site.Data .Site.Language.Lang).config.footer.enable }}
 {{ partial "footer.html" . }}
 {{ end }}
 {{ partial "js_other_page.html" . }}

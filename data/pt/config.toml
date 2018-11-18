@@ -1,0 +1,214 @@
+## Portuguese
+
+[params]
+name = "DalaFarm"
+description = """DalaFarm providencia vegetais em pó como morangos, aipos, beterraba, cenoura, heart-leaf, espinafre, tomates, conchelo,
+                 pó de semente de lotus para bebê. DalaFarm também produz vegetais misturados para drink detox, juntamento com oléo de alho.
+                 """
+#announcement_text = "[TOTAL PASHIMINA...](/promo-order)"
+announcement_link = "/promotion"
+discount_code_success_alert = "Parabéns por receber sua promoção "
+# Link custom assets relative to /static
+custom_css = ["css/nprogress.css"]
+custom_js  = ["js/nprogress.js"]
+favicon    = "favicon.ico"
+disableFonts = false
+#Content footer
+#Content footer
+contentFooter = """
+<a href="/order" style="color: #fff;background-color: #C5F442;" class="page-scroll btn btn-xl">Compre agora</a>
+"""
+related_blog_limit = 7
+
+# Navigation
+[params.navigation]
+brand = "DalaFarm"
+product = "Produtos"
+about = "Sobre nós"
+team = "Time DalaFarm"
+contact = "Contate-nos"
+# Optional logo as brand stored in img/
+#logo = "logo.svg"
+
+# Hero section
+[params.hero]
+title = "Bom vindo a DalaFarm!"
+subtitle = "Prazer em conhecer"
+buttonText = "Veja os produtos ofertados"
+buttonPath = "/san-pham/"
+orderButtonText = "COMPRAR"
+nextButtonText = "PRÓXIMO"
+
+# Products section
+[params.product]
+enable = true
+title = "Produtos"
+subtitle = "Produtos oferecidos pela Dalafarm"
+path = "product"
+
+# Review section
+[Languages.vi.params.review]
+enable = true
+title = "Feedback"
+subtitle = "Veja o que os clientes dizem sobre os produtos DalaFarm"
+path = "phan-hoi"
+    [[Languages.vi.params.review.reviews]]
+      img = "yen-nguyen.jpg"
+      name = "Yến Nguyễn"
+      position = "Software engineer at DXC Vietnam"
+      content = "Eu usei o produto misturado em pó para comida de bebê, ama o bebê e estômago do bebê parece mais digerível. Obrigado loja."
+
+    [[Languages.vi.params.review.reviews]]
+      img = "tai-phan.jpg"
+      name = "Tài Phan"
+      position = "Senior Head teacher at outerspace language school"
+      content = "Eu tenho usado produtos da DalaFarm. Se você está comendo vegetais é uma tortura, você vai esquecer quando usar DalaFarm."
+
+    [[Languages.vi.params.review.reviews]]
+      img = "uyen-to.jpg"
+      name = "Tố Uyên"
+      position = "Ho Chi Minh City, Vietnam"
+      content = "Este alface é um peixe favorito. Fácil de beber, não cheira ruim como legumes, misturado com água e adicionado de açúcar com um pouco gelo é sempre bom."
+
+    [[Languages.vi.params.review.reviews]]
+      img = "nguyen-thu-thao.jpg"
+      name = "Nguyễn Thu Thảo"
+      position = "Ho Chi Minh City, Vietnam"
+      content = "Vamos tentar que sua filha de 5 anos veja como ela comentou sobre como beber alguns goles é que ela sempre diz: \"Esse é o brócolis, não a mãe?\" hihi..."
+
+# About section
+[params.about]
+enable = false
+    title = "História da DalaFarm"
+    subtitle = "Como nossa jornada começou."
+    endpoint = "Seja parte<br> de nossa <br>história!"
+    path = "sobre nós"
+    [[params.about.events]]
+      img = "toi-den-duc-ha.png"
+      date = "June 2015"
+      title = "Đức Hà compania é estabelecida"
+      description = "Ms. Hà fundou a compania Đức Hà para produzir e comercializar temperos baseadas em ervas, mais especificamente, alho preto e produtos baseados em alho"
+
+    [[params.about.events]]
+      img = "dalahouse.jpg"
+      date = "Feb 2016"
+      title = "Dalahouse nasceu"
+      description = "Ms. Trâm fundou a compania Dalahouse com paixa para fazer pó vegano mais acessivel e conveniente para estilos de vida mais corridos"
+
+    [[about.events]]
+      img = "dalafarm.png"
+      date = "March 2017"
+      title = "Começo da história DalaFarm"
+      description = "Compartilhando da mesma paixão sobre ea alta qualidade dos produtos Vietnameses, Ms. Hà e Ms. Trâm uniram Đức Hà và Dalahouse em uma compania unificada - chamada DalaFarm. Com 2 co-fundadores adicionais - Ms. Thư and Mr. Vũ, nós prometemos entregar produtos de alta qualidade, saúde e segurança para todo o mundo!"
+
+# Team section
+[params.team]
+enable = true
+center = true
+title = "Time DalaFarm"
+subtitle = ""
+description = "Nós somos pessoas apoixonadas, jovens e dinâmicas com diferentes origens, que compartilham a mesma motivação de levar o melhor do Vietnam para o mundo."
+path = "team"
+    [[params.team.members]]
+      img = "thu.jpg"
+      name = "Võ Thị Thanh Thư"
+      position = "Co-founder"
+      livesIn = "Hồ Chí Minh, Việt Nam"
+#      bio = "Sale Representative"
+      social = [
+        ["fa-facebook", "https://www.facebook.com/thanh.thuvo.1"]
+      ]
+
+    [[params.team.members]]
+      img = "vu.jpg"
+      name = "Lê Tấn Vũ"
+      position = "Co-founder"
+      livesIn = "Hồ Chí Minh, Việt Nam"
+#      bio = "Software Engineer"
+      social = [
+        ["fa-facebook", "https://www.facebook.com/LeeU14"]
+      ]
+# Contact section
+[params.contact]
+enable = true
+title = "Contate-nos"
+    subtitle  = "Deixe uma mensagem e responderemos dentro de um dia."
+    buttonText = "Enviar mensagem"
+    thanks = "Obrigado por nos contactar. Nós responderemos dentro de um dia."
+    error = "A mensagem não foi enviada. Por favor, envie um email para info@dalafarm.vn"
+    email = "info@dalafarm.vn"
+
+# 'warning' defines error messages for invalid inputs
+[params.contact.form.name]
+  text = "Name *"
+  warning = "Por favor, coloque o seu nome."
+
+[params.contact.form.email]
+  text = "Email*"
+  warning = "Por favor, coloque o seu número de email."
+
+[params.contact.form.phone]
+  text = "Telefone *"
+  warning = "Por favor, coloque o seu número de telefone."
+
+[params.contact.form.message]
+  text = "Menssagem *"
+  warning = "Por favor, coloque a sua mensagem."
+
+# Add optional form fields to identify contact forms
+[[params.contact.form.hidden]]
+    name = "DalaFarm"
+    value = "dalafarm.vn"
+#
+[[params.contact.form.hidden]]
+# Special values for name such as "page" and "site" will be autofilled
+    name = "site"
+
+
+# Footer section
+[params.footer]
+enable = true
+copyright = "Copyright DalaFarm (C) 2017 - 2018"
+info = """##### DALAFARM - CHUÔNG XANH PRODUÇÃO E COMÉRCIO CO. LTD.
+
+<i class="fa fa-building-o"></i> 317 bloco D, Lac Long Quan apartmento, Ala 5, Destrito 11, HCMC, Vietnã
+
+<i class="fa fa-phone"></i> [0906 951 498](tel:0906 951 498)
+
+<i class="fa fa-envelope"></i> [info@dalafarm.vn](mailto:info@dalafarm.vn) | [sale@dalafarm.vn](mailto:sale@dalafarm.vn)
+
+<i class="fa fa-calendar"></i> Segunda - Sábado <i class="fa fa-clock-o"></i> 8:00 - 17:00
+"""
+[[params.footer.quicklinks]]
+  text = "Termos and Condições"
+  link = "/term-condition"
+[[params.footer.social]]
+  icon = "fa-facebook"
+  link = "https://www.facebook.com/dalafarm.vn/"
+[[params.footer.social]]
+  icon = "fa-pinterest"
+  link = "https://www.pinterest.com/dalafarm/"
+[[params.footer.social]]
+  icon = "fa-instagram"
+  link = "https://www.instagram.com/dalafarm.vn/"
+[[params.footer.sitemap]]
+  text = "Blog DalaFarm"
+  link = "/blog/"
+[[params.footer.sitemap]]
+  text = "Cozinha DalaFarm"
+  link = "/dala-kitchen/"
+[[params.footer.sitemap]]
+  text = "Produto"
+  link = "/product/"
+[[params.footer.sitemap]]
+  text = "FAQ"
+  link = "/qa/"
+[[params.footer.sitemap]]
+  text = "Perfil DalaFarm "
+  link = "/company-profile/"
+[[params.footer.sitemap]]
+  text = "Ceritificados"
+  link = "/company-docs/"
+[[footer.sitemap]]
+  text = "Time DalaFarm"
+  link = "/team/"

@@ -11,21 +11,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      {{ if .Site.Params.params.navigation.logo }}
+      {{ if (index .Site.Data .Site.Language.Lang).config.params.navigation.logo }}
         <a class="navbar-brand page-scroll" href="{{ if .IsHome }}#page-top{{ else }}{{ .Site.BaseURL }}{{ end }}">
-          {{ $url := printf "img/%s" .Site.Params.params.navigation.logo }}
-          <img src="{{ $url | absURL }}" class="img-responsive" alt="{{ .Site.Params.params.navigation.brand }}">
+          {{ $url := printf "img/%s" (index .Site.Data .Site.Language.Lang).config.params.navigation.logo }}
+          <img src="{{ $url | absURL }}" class="img-responsive" alt="{{ (index .Site.Data .Site.Language.Lang).config.params.navigation.brand }}">
         </a>
       {{ else }}
         <a class="navbar-brand page-scroll" href="{{ if .IsHome }}#page-top{{ else }}{{ .Site.BaseURL }}{{ end }}">
-            {{ with .Site.Params.params.navigation.brand }}{{ . }}{{ end }}
+            {{ with (index .Site.Data .Site.Language.Lang).config.params.navigation.brand }}{{ . }}{{ end }}
         </a>
       {{ end }}
 
       {{ if or (eq .RelPermalink "/shipping/") (eq .RelPermalink "/confirm/") (eq .RelPermalink "/promo-shipping/") (eq .RelPermalink "/promo-confirm/")}}
 
       {{ else }}
-      <!--<a class="navbar-toggle cta-on-nav" href="{{ "/promo-order" | absLangURL }}" >{{ with .Site.Params.params.hero.orderButtonText }}{{ . }}{{ end }}-->
+      <!--<a class="navbar-toggle cta-on-nav" href="{{ "/promo-order" | absLangURL }}" >{{ with (index .Site.Data .Site.Language.Lang).config.params.hero.orderButtonText }}{{ . }}{{ end }}-->
       <!--</a>-->
 
       <a class="navbar-toggle cta-on-nav" href="{{ "/promo-shipping" | absLangURL }}"><i class="fa fa-shopping-cart fa-3x" style="color: #CEFF44!important;"></i>

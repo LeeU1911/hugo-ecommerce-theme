@@ -1,14 +1,14 @@
 {{ "<!-- Team Section -->" | safeHTML }}
-<section id="{{ with .Site.Params.params.team.path }}{{ . }}{{ end }}" class="bg-light-gray">
+<section id="{{ with (index .Site.Data .Site.Language.Lang).config.params.team.path }}{{ . }}{{ end }}" class="bg-light-gray">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h2 class="section-heading">{{ with .Site.Params.params.team.title }}{{ . | markdownify }}{{ end }}</h2>
-        <h3 class="section-subheading text-mutedwith ">{{ with .Site.Params.params.team.subtitle }}{{ . | markdownify }}{{ end }}</h3>
+        <h2 class="section-heading">{{ with (index .Site.Data .Site.Language.Lang).config.params.team.title }}{{ . | markdownify }}{{ end }}</h2>
+        <h3 class="section-subheading text-mutedwith ">{{ with (index .Site.Data .Site.Language.Lang).config.params.team.subtitle }}{{ . | markdownify }}{{ end }}</h3>
       </div>
     </div>
-    <div class="row flexbox{{ if .Site.Params.params.team.center }} flexbox-center{{ end }}">
-      {{ range .Site.Params.params.team.members }}
+    <div class="row flexbox{{ if (index .Site.Data .Site.Language.Lang).config.params.team.center }} flexbox-center{{ end }}">
+      {{ range (index .Site.Data .Site.Language.Lang).config.params.team.members }}
     <div class="col-xs-6 col-sm-3 col">
           <div class="team-member">
             {{ $url := printf "img/team/%s" .img }}
@@ -50,7 +50,7 @@
     </div>
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 text-center">
-        <p class="large text-muted">{{ with .Site.Params.params.team.description }}{{ . | markdownify }}{{ end }}</p>
+        <p class="large text-muted">{{ with (index .Site.Data .Site.Language.Lang).config.params.team.description }}{{ . | markdownify }}{{ end }}</p>
       </div>
     </div>
   </div>

@@ -1,0 +1,38 @@
+{
+  "name": "Hugo e-commerce theme",
+  "version": "1.0.0",
+  "description": "An e-commerce kind of theme for simple product display and potentially a simple checkout flow, meant to be used with gohugo - a static site generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeeU1911/hugo-ecommerce-theme.git"
+  },
+  "keywords": [
+    "DalaFarm",
+    "veggie-powders"
+  ],
+  "author": "Tom at DalaFarm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LeeU1911/hugo-ecommerce-theme/issues"
+  },
+  "homepage": "https://github.com/LeeU1911/hugo-ecommerce-theme#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-gzip": "^1.4.0",
+    "gulp-htmlmin": "^4.0.0",
+    "gulp-imagemin": "^3.2.0",
+    "gulp-less": "^3.3.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.1.2",
+    "gulp-watch": "^4.3.11"
+  },
+  "dependencies": {
+    "clipboard": "^1.7.1"
+  }
+}
